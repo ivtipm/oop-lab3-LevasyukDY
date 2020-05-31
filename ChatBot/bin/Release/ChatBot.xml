@@ -1,0 +1,557 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ChatBot</name>
+    </assembly>
+    <members>
+        <member name="T:ChatBot.AbstractChatBot">
+            <summary>
+            Абстрактный класс для переопределения метода Answer
+            </summary>
+        </member>
+        <member name="M:ChatBot.AbstractChatBot.Answer(System.String)">
+            <summary>
+            Абстрактный метод
+            </summary>
+            <param name="userQuestion"></param>
+            <returns> Ответ на пользовательский вопрос </returns>
+        </member>
+        <member name="T:ChatBot.CBRdailyResponse">
+            <summary>
+            Класс, содержащий данные о курсе валют
+            </summary>
+        </member>
+        <member name="P:ChatBot.CBRdailyResponse.Valute">
+            <summary>
+            Поле, содержащее информацию о волюте
+            </summary>
+        </member>
+        <member name="T:ChatBot.CBRdailyInfo">
+            <summary>
+            Класс, содержащий валюты и информацию о них
+            </summary>
+        </member>
+        <member name="P:ChatBot.CBRdailyInfo.USD">
+            <summary>
+            Информация о долларе США
+            </summary>
+        </member>
+        <member name="P:ChatBot.CBRdailyInfo.EUR">
+            <summary>
+            Информация о евро
+            </summary>
+        </member>
+        <member name="P:ChatBot.CBRdailyInfo.CNY">
+            <summary>
+            Информация о китайском юане
+            </summary>
+        </member>
+        <member name="T:ChatBot.ValuteInfo">
+            <summary>
+            Класс, содержащий название валюты и её текущее значение
+            </summary>
+        </member>
+        <member name="P:ChatBot.ValuteInfo.Name">
+            <summary>
+            Поле, содержащее название валюты
+            </summary>
+        </member>
+        <member name="P:ChatBot.ValuteInfo.Value">
+            <summary>
+            Поле, содержащее значение валюты
+            </summary>
+        </member>
+        <member name="T:ChatBot.ChatBot">
+            <summary>
+            Класс, содержащий методы для работы с чат-ботом.
+            Здесь обработчики всех команд для чат-бота.
+            </summary>
+        </member>
+        <member name="M:ChatBot.ChatBot.HelloBot(System.String)">
+            <summary>
+            Приветстивие
+            </summary>
+            <param name="question"></param>
+            <returns> "Привет, " + userName + "!" </returns>
+        </member>
+        <member name="M:ChatBot.ChatBot.HowTime(System.String)">
+            <summary>
+            Ответ на вопрос "Который час?"
+            </summary>
+            <param name="question"></param>
+            <returns> "Сейчас: " + DateTime.Now.ToString("HH:mm") </returns>
+        </member>
+        <member name="M:ChatBot.ChatBot.HowDate(System.String)">
+            <summary>
+            Ответ на вопрос "Какое сегодня число?"
+            </summary>
+            <param name="question"></param>
+            <returns> "Сегодня: " + DateTime.Now.ToString("dd.MM.yy") </returns>
+        </member>
+        <member name="M:ChatBot.ChatBot.HowAreYou(System.String)">
+            <summary>
+            Ответ на вопрос "Как дела?"
+            </summary>
+            <param name="question"></param>
+            <returns> "Порядок!" или "Просто чудесно :)" </returns>
+        </member>
+        <member name="M:ChatBot.ChatBot.ThankYou(System.String)">
+            <summary>
+            Ответ на "Спасибо"
+            </summary>
+            <param name="question"></param>
+            <returns> "Рад был помочь!" </returns>
+        </member>
+        <member name="M:ChatBot.ChatBot.MulPls(System.String)">
+            <summary>
+            Умножение
+            </summary>
+            <param name="question"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ChatBot.ChatBot.DivPls(System.String)">
+            <summary>
+            Деление
+            </summary>
+            <param name="question"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ChatBot.ChatBot.PlusPls(System.String)">
+            <summary>
+            Сложение
+            </summary>
+            <param name="question"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ChatBot.ChatBot.SubPls(System.String)">
+            <summary>
+            Вычитание
+            </summary>
+            <param name="question"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ChatBot.ChatBot.CurrentTasks(System.String)">
+            <summary>
+            Вывод текущих задач из файла
+            </summary>
+            <param name="question"></param>
+            <returns> Список задач </returns>
+        </member>
+        <member name="M:ChatBot.ChatBot.AddTask(System.String)">
+            <summary>
+            Добавление новой задачи
+            </summary>
+            <param name="question"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ChatBot.ChatBot.DeleteTask(System.String)">
+            <summary>
+            Удаление задачи
+            </summary>
+            <param name="question"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ChatBot.ChatBot.WeatherPls(System.String)">
+            <summary>
+            Запрос на проверку погоды
+            </summary>
+            <param name="question"></param>
+            <returns> Информацию о погоде </returns>
+        </member>
+        <member name="M:ChatBot.ChatBot.CBRdailyPls(System.String)">
+            <summary>
+            Запрос на проверку курсов валют
+            </summary>
+            <param name="question"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ChatBot.ChatBot.#ctor">
+            <summary>
+            Конструктор
+            </summary>
+        </member>
+        <member name="M:ChatBot.ChatBot.#ctor(System.String)">
+            <summary>
+            Конструктор с параметрами
+            </summary>
+            <param name="filename"></param>
+        </member>
+        <member name="P:ChatBot.ChatBot.UserName">
+            <summary>
+            Геттер имени пользователя
+            </summary>
+        </member>
+        <member name="P:ChatBot.ChatBot.Path">
+            <summary>
+            Геттер пути к файлу с историей сообщений
+            </summary>
+        </member>
+        <member name="P:ChatBot.ChatBot.History">
+            <summary>
+            Геттер истории сообщений
+            </summary>
+        </member>
+        <member name="M:ChatBot.ChatBot.LoadHistory(System.String)">
+            <summary>
+            Загрузка истории из файла
+            </summary>
+            <param name="user"></param>
+        </member>
+        <member name="M:ChatBot.ChatBot.AddToHistory(System.String[])">
+            <summary>
+            Добавление переписки в файл
+            </summary>
+            <param name="answer"></param>
+        </member>
+        <member name="M:ChatBot.ChatBot.FindOutWeather">
+            <summary>
+            Запрос информации о погоде
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ChatBot.ChatBot.FindOutCBR">
+            <summary>
+            Запрос информации о курсе валют
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ChatBot.ChatBot.Answer(System.String)">
+            <summary>
+            Переопределённый метод ответа пользователю
+            </summary>
+            <param name="userQuestion"></param>
+            <returns></returns>
+        </member>
+        <member name="T:ChatBot.DeleteDialogForm">
+            <summary>
+            Класс, представляющий собой форму подтверждения удаления истории сообщений
+            </summary>
+        </member>
+        <member name="T:ChatBot.DeleteDialogForm.ChangeTextBox">
+            <summary>
+            Класс, содержащий ссылку на метод изменения текста в TextBox
+            </summary>
+            <param name="nText"></param>
+        </member>
+        <member name="E:ChatBot.DeleteDialogForm.ChangeTextBox1">
+            <summary>
+            Объявление события изменения текста в TextBox
+            </summary>
+        </member>
+        <member name="M:ChatBot.DeleteDialogForm.#ctor(ChatBot.MainForm)">
+            <summary>
+            Конструктор
+            </summary>
+            <param name="MF"></param>
+        </member>
+        <member name="M:ChatBot.DeleteDialogForm.DeleteDialogForm_FormClosed(System.Object,System.Windows.Forms.FormClosedEventArgs)">
+            <summary>
+            При закрытии формы удаления истории сообщений - скрываем её
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:ChatBot.DeleteDialogForm.NoButton_KeyDown(System.Object,System.Windows.Forms.KeyEventArgs)">
+            <summary>
+            При нажатии Enter с выделением на кнопке "Нет" - скрываем форму
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:ChatBot.DeleteDialogForm.YesButton_KeyDown(System.Object,System.Windows.Forms.KeyEventArgs)">
+            <summary>
+            При нажатии Enter с выделением на кнопке "Да" - удаляем историю сообщений
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:ChatBot.DeleteDialogForm.YesButton_Click(System.Object,System.EventArgs)">
+            <summary>
+            При нажатии на кнопку "Да" - удаляем историю сообщений
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="F:ChatBot.DeleteDialogForm.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:ChatBot.DeleteDialogForm.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:ChatBot.DeleteDialogForm.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:ChatBot.HelpForm">
+            <summary>
+            Класс, представляющий собой форму справки, содержащую команды чат-бота
+            </summary>
+        </member>
+        <member name="M:ChatBot.HelpForm.#ctor">
+            <summary>
+            Конструктор
+            </summary>
+        </member>
+        <member name="M:ChatBot.HelpForm.OKButton_KeyDown(System.Object,System.Windows.Forms.KeyEventArgs)">
+            <summary>
+            Закрываем HelpForm при нажатии Enter с выделением на кнопке
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:ChatBot.HelpForm.HelpForm_FormClosed(System.Object,System.Windows.Forms.FormClosedEventArgs)">
+            <summary>
+            При закрытии формы она скрывается
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:ChatBot.HelpForm.OKButton_Click(System.Object,System.EventArgs)">
+            <summary>
+            Закрываем HelpForm при нажатии на кнопку "OK"
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="F:ChatBot.HelpForm.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:ChatBot.HelpForm.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:ChatBot.HelpForm.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:ChatBot.LoginForm">
+            <summary>
+            Класс, представляющий собой форму авторизации
+            </summary>
+        </member>
+        <member name="M:ChatBot.LoginForm.#ctor">
+            <summary>
+            Конструктор формы авторизации
+            </summary>
+        </member>
+        <member name="M:ChatBot.LoginForm.LoginButton_Click(System.Object,System.EventArgs)">
+            <summary>
+            Обработчик события "Нажатие на кнопку"
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:ChatBot.LoginForm.LoginButton_KeyDown(System.Object,System.Windows.Forms.KeyEventArgs)">
+            <summary>
+            Вызываем LoginButton_Click при нажатии Enter с выделением на кнопке
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:ChatBot.LoginForm.LoginText_KeyDown(System.Object,System.Windows.Forms.KeyEventArgs)">
+            <summary>
+            Вызываем LoginButton_Click при нажатии Enter с выделением на поле ввода
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="F:ChatBot.LoginForm.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:ChatBot.LoginForm.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:ChatBot.LoginForm.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:ChatBot.MainForm">
+            <summary>
+            Главная форма чат-бота, всё общение происходит здесь
+            </summary>
+        </member>
+        <member name="F:ChatBot.MainForm.bot">
+            <summary>
+            Через этот объект обращаемся к методам из класса ChatBot
+            </summary>
+        </member>
+        <member name="M:ChatBot.MainForm.#ctor">
+            <summary>
+            Конструктор
+            </summary>
+        </member>
+        <member name="M:ChatBot.MainForm.ChangeTextInTextBox(System.String)">
+            <summary>
+            Обработчик событий для возможности управления компонентом TextBox с формы DeleteDialogForm
+            </summary>
+            <param name="newText"></param>
+        </member>
+        <member name="M:ChatBot.MainForm.RestoreChat">
+            <summary>
+            Метод, восстанавливающий историю сообщений в TextBox
+            </summary>
+        </member>
+        <member name="M:ChatBot.MainForm.ChatText_TextChanged(System.Object,System.EventArgs)">
+            <summary>
+            Обновление текста и перевод каретки в конец
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:ChatBot.MainForm.MainForm_FormClosed(System.Object,System.Windows.Forms.FormClosedEventArgs)">
+            <summary>
+            При закрытии формы - выход из приложения
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:ChatBot.MainForm.SendButton_Click(System.Object,System.EventArgs)">
+            <summary>
+            Обработчик для кнопки отправки сообщения
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:ChatBot.MainForm.MainForm_KeyDown(System.Object,System.Windows.Forms.KeyEventArgs)">
+            <summary>
+            При нажатии Enter с выделением на форме - отправка сообщения
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:ChatBot.MainForm.SendText_KeyDown(System.Object,System.Windows.Forms.KeyEventArgs)">
+            <summary>
+            При нажатии Enter с выделением на поле ввода - отправка сообщения
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:ChatBot.MainForm.HelpImage_Click(System.Object,System.EventArgs)">
+            <summary>
+            Обработчик нажатия на иконку помощи
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:ChatBot.MainForm.DeleteDialogImage_Click(System.Object,System.EventArgs)">
+            <summary>
+            Обработчик нажатия на иконку очистки диалога
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="F:ChatBot.MainForm.components">
+            <summary>
+            Обязательная переменная конструктора.
+            </summary>
+        </member>
+        <member name="M:ChatBot.MainForm.Dispose(System.Boolean)">
+            <summary>
+            Освободить все используемые ресурсы.
+            </summary>
+            <param name="disposing">истинно, если управляемый ресурс должен быть удален; иначе ложно.</param>
+        </member>
+        <member name="M:ChatBot.MainForm.InitializeComponent">
+            <summary>
+            Требуемый метод для поддержки конструктора — не изменяйте 
+            содержимое этого метода с помощью редактора кода.
+            </summary>
+        </member>
+        <member name="M:ChatBot.Program.Main">
+            <summary>
+            Главная точка входа для приложения.
+            </summary>
+        </member>
+        <member name="T:ChatBot.WeatherResponse">
+            <summary>
+            Класс, содержащий информацию о погоде
+            </summary>
+        </member>
+        <member name="P:ChatBot.WeatherResponse.Main">
+            <summary>
+            Поле, содержащее информацию о температуре
+            </summary>
+        </member>
+        <member name="P:ChatBot.WeatherResponse.Name">
+            <summary>
+            Поле, содержащее название города
+            </summary>
+        </member>
+        <member name="P:ChatBot.WeatherResponse.Wind">
+            <summary>
+            Поле, содержащее информацию о ветре
+            </summary>
+        </member>
+        <member name="T:ChatBot.TemperatureInfo">
+            <summary>
+            Класс, содержащий информацию о температуре
+            </summary>
+        </member>
+        <member name="P:ChatBot.TemperatureInfo.Temp">
+            <summary>
+            Поле, содержащее текущую температуру
+            </summary>
+        </member>
+        <member name="T:ChatBot.WindInfo">
+            <summary>
+            Класс, содержащий информацию о ветре
+            </summary>
+        </member>
+        <member name="P:ChatBot.WindInfo.Speed">
+            <summary>
+            Поле, содержащее текущее значение ветра
+            </summary>
+        </member>
+        <member name="T:ChatBot.Properties.Resources">
+            <summary>
+              Класс ресурса со строгой типизацией для поиска локализованных строк и т.д.
+            </summary>
+        </member>
+        <member name="P:ChatBot.Properties.Resources.ResourceManager">
+            <summary>
+              Возвращает кэшированный экземпляр ResourceManager, использованный этим классом.
+            </summary>
+        </member>
+        <member name="P:ChatBot.Properties.Resources.Culture">
+            <summary>
+              Перезаписывает свойство CurrentUICulture текущего потока для всех
+              обращений к ресурсу с помощью этого класса ресурса со строгой типизацией.
+            </summary>
+        </member>
+        <member name="P:ChatBot.Properties.Resources.background">
+            <summary>
+              Поиск локализованного ресурса типа System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:ChatBot.Properties.Resources.delete_dialog">
+            <summary>
+              Поиск локализованного ресурса типа System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:ChatBot.Properties.Resources.help">
+            <summary>
+              Поиск локализованного ресурса типа System.Drawing.Bitmap.
+            </summary>
+        </member>
+    </members>
+</doc>
